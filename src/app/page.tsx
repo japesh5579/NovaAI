@@ -10,6 +10,7 @@ import {
   Sparkles, ChevronDown, Phone, MapPin,
 } from "lucide-react";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
+import GlobeHero from "@/components/globe-hero";
 import { ContactCard } from "@/components/contact-card";
 import { TiltCard } from "@/components/ui/tilt-card";
 import PricingSection from "@/components/ui/pricing-section";
@@ -60,8 +61,8 @@ function Typewriter({ words }: { words: string[] }) {
     return () => clearTimeout(t);
   }, [displayed, deleting, index, words]);
   return (
-    <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-      {displayed}<span className="animate-pulse text-blue-400">|</span>
+    <span className="bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent">
+      {displayed}<span className="animate-pulse text-[#1E3A73]">|</span>
     </span>
   );
 }
@@ -69,8 +70,8 @@ function Typewriter({ words }: { words: string[] }) {
 // ─── Section badge ────────────────────────────────────────
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold tracking-[0.18em] uppercase mb-5">
-      <span className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />
+    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A1A]/10 border border-[#FF7A1A]/30 text-[#FF7A1A] text-[10px] font-bold tracking-[0.18em] uppercase mb-5">
+      <span className="w-1 h-1 rounded-full bg-[#FF7A1A] animate-pulse" />
       {children}
     </div>
   );
@@ -86,17 +87,17 @@ function ServiceCard({ icon: Icon, title, description, tags, num }: {
       tiltLimit={8}
       scale={1.03}
       effect="gravitate"
-      className="group relative bg-[#0a0a18] border border-white/[0.06] rounded-2xl p-6 hover:border-blue-500/25 hover:bg-[#0c0c20] transition-colors duration-300 flex flex-col h-full"
+      className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1E3A73]/20 hover:bg-blue-50 transition-colors duration-300 flex flex-col h-full"
     >
-      <span className="absolute top-5 right-5 text-[10px] font-mono text-white/[0.08] group-hover:text-white/[0.15] transition-colors select-none">{num}</span>
-      <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/[0.15] flex items-center justify-center mb-4 group-hover:bg-blue-500/15 transition-colors shrink-0">
-        <Icon size={18} className="text-blue-400" />
+      <span className="absolute top-5 right-5 text-[10px] font-mono text-gray-300 group-hover:text-gray-400 transition-colors select-none">{num}</span>
+      <div className="w-10 h-10 rounded-xl bg-[#1E3A73]/10 border border-[#1E3A73]/20 flex items-center justify-center mb-4 group-hover:bg-[#1E3A73]/15 transition-colors shrink-0">
+        <Icon size={18} className="text-[#1E3A73]" />
       </div>
-      <h3 className="font-bold text-white text-sm mb-2 leading-snug">{title}</h3>
+      <h3 className="font-bold text-gray-900 text-sm mb-2 leading-snug">{title}</h3>
       <p className="text-xs text-gray-600 leading-relaxed mb-4 flex-1">{description}</p>
       <div className="flex flex-wrap gap-1.5">
         {tags.map(t => (
-          <span key={t} className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.04] text-gray-500 border border-white/[0.05] font-medium">{t}</span>
+          <span key={t} className="px-2 py-0.5 text-[10px] rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-medium">{t}</span>
         ))}
       </div>
     </TiltCard>
@@ -137,7 +138,7 @@ function ContactForm() {
       setSending(false);
     }
   };
-  const fieldCls = "bg-white/[0.04] border-white/[0.08] text-white placeholder:text-gray-700 focus-visible:ring-1 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/40 rounded-xl h-11";
+  const fieldCls = "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl h-11";
   const labelCls = "text-[10px] font-bold tracking-[0.15em] uppercase text-gray-500";
   if (sent) return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
@@ -146,7 +147,7 @@ function ContactForm() {
         <CheckCircle2 size={22} className="text-emerald-400" />
       </div>
       <div>
-        <p className="font-bold text-white">Message sent!</p>
+        <p className="font-bold text-gray-900">Message sent!</p>
         <p className="text-sm text-gray-500 mt-1">I&apos;ll reply within 24 hours.</p>
       </div>
     </motion.div>
@@ -179,10 +180,10 @@ function ContactForm() {
         <Label htmlFor="cf-msg" className={labelCls}>Message</Label>
         <Textarea id="cf-msg" required placeholder="Tell me about your project…" value={form.message}
           onChange={e => setForm({ ...form, message: e.target.value })} rows={4}
-          className="bg-white/[0.04] border-white/[0.08] text-white placeholder:text-gray-700 focus-visible:ring-1 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/40 rounded-xl resize-none" />
+          className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl resize-none" />
       </div>
       <Button type="submit" disabled={sending}
-        className="w-full h-11 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white border-0 font-bold rounded-xl shadow-lg shadow-blue-600/20 transition-all">
+        className="w-full h-11 bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] hover:from-[#FF7A1A]/90 hover:to-[#1E3A73]/90 text-white border-0 font-bold rounded-xl shadow-lg shadow-[#1E3A73]/20 transition-all">
         {sending
           ? <><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
               className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full mr-2" />Sending…</>
@@ -204,8 +205,38 @@ const SERVICES = [
   { icon: Film,         title: "Video Editing",        description: "Professional editing, color grading, captions for short & long-form content.",        tags: ["Color Grading", "Reels", "Captions"], num: "08" },
 ];
 
+const BLOG_POSTS = [
+  {
+    slug: "ai-dashboard-nextjs",
+    title: "How I Built a Real-Time AI Dashboard with Next.js 14",
+    date: "2025-04-12",
+    description: "A deep dive into building a production AI dashboard with streaming responses, role-based access, and sub-50ms latency on Vercel Edge.",
+    tags: ["Next.js", "OpenAI", "TypeScript"],
+    readTime: "8 min read",
+    cover: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80",
+  },
+  {
+    slug: "shopify-vs-woocommerce-2025",
+    title: "Shopify vs WooCommerce in 2025: A Developer's Honest Take",
+    date: "2025-03-28",
+    description: "After migrating 10+ stores both ways, here's the unfiltered truth about which platform wins — and when.",
+    tags: ["Shopify", "E-Commerce", "WooCommerce"],
+    readTime: "6 min read",
+    cover: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80",
+  },
+  {
+    slug: "youtube-growth-0-to-50k",
+    title: "0 to 50K: The YouTube Growth Strategy That Actually Worked",
+    date: "2025-03-10",
+    description: "The exact content calendar, thumbnail formula, and SEO strategy that grew a tech channel from zero to 50,000 subscribers in 8 months.",
+    tags: ["YouTube", "SEO", "Content Strategy"],
+    readTime: "7 min read",
+    cover: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=700&q=80",
+  },
+]
+
 const STACK = [
-  { icon: MonitorSmartphone, title: "Frontend",        color: "text-blue-400",    tech: ["React.js", "Next.js", "Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS"] },
+  { icon: MonitorSmartphone, title: "Frontend",        color: "text-[#1E3A73]",   tech: ["React.js", "Next.js", "Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS"] },
   { icon: Server,            title: "Backend",         color: "text-violet-400",  tech: ["Node.js", "Express.js", "NestJS", "Django", "FastAPI", "REST API"] },
   { icon: Database,          title: "Databases",       color: "text-cyan-400",    tech: ["MongoDB", "PostgreSQL", "MySQL"] },
   { icon: Cloud,             title: "Cloud & DevOps",  color: "text-emerald-400", tech: ["AWS S3", "AWS EC2", "Lambda", "Postman", "Vercel"] },
@@ -224,38 +255,41 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const NAV = ["About", "Stack", "Services", "Portfolio", "Pricing", "Contact"];
+  const NAV = ["About", "Stack", "Services", "Portfolio", "Blog", "Pricing", "Contact"];
 
   return (
-    <div className="bg-[#07070f] text-white min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen">
 
       {/* ── Nav ───────────────────────────────────────── */}
       <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#07070f]/90 backdrop-blur-2xl border-b border-white/[0.06] py-3" : "py-5"
+        scrolled ? "bg-white/90 backdrop-blur-2xl border-b border-gray-200 py-3" : "py-5"
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center">
+
           {/* Logo */}
-          <motion.a href="#" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }} className="flex items-center gap-2.5 mr-auto shrink-0">
-            <img src="/logo.png" alt="Nova AI Logo" className="w-9 h-9 rounded-lg object-cover" />
-            <div>
-              <p className="text-[12px] font-black tracking-widest text-white leading-none">NOVA</p>
-              <p className="text-[8px] tracking-[0.25em] text-gray-500 leading-none uppercase mt-0.5">AICode Studio</p>
-            </div>
-          </motion.a>
+          <a
+            href="#"
+            id="nav-logo"
+            className="font-semibold tracking-tight text-[28px] leading-none select-none mr-auto lg:ml-10"
+          >
+            <span style={{ color: "#1E3A73" }}>Nova </span>
+            <span style={{ color: "#FF7A1A" }}>AI</span>
+            <span style={{ color: "#1E3A73" }}>Code </span>
+            <span style={{ color: "#1E3A73" }}>Studio</span>
+          </a>
 
           {/* Desktop nav */}
           <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-            className="hidden md:flex items-center gap-7 ml-auto">
+            className="hidden md:flex items-center gap-7">
             {NAV.map(n => (
-              <a key={n} href={`#${n.toLowerCase()}`}
-                className="text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-white transition-colors duration-200 font-semibold">
+              <a key={n} href={n === "Blog" ? "/blog" : `#${n.toLowerCase()}`}
+                className="text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-gray-900 transition-colors duration-200 font-semibold">
                 {n}
               </a>
             ))}
           </motion.nav>
 
-          <button className="md:hidden text-gray-500 hover:text-white ml-auto" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="md:hidden text-gray-500 hover:text-gray-900 ml-auto" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -264,80 +298,24 @@ export default function Portfolio() {
           {menuOpen && (
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
-              className="md:hidden bg-[#07070f] border-t border-white/[0.06] px-6 py-5 flex flex-col gap-4">
+              className="md:hidden bg-white border-t border-gray-200 px-6 py-5 flex flex-col gap-4">
               {NAV.map(n => (
-                <a key={n} href={`#${n.toLowerCase()}`} onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium text-gray-400 hover:text-white transition-colors">{n}</a>
+                <a key={n} href={n === "Blog" ? "/blog" : `#${n.toLowerCase()}`} onClick={() => setMenuOpen(false)}
+                  className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">{n}</a>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
       </header>
 
-      {/* ══ HERO — sticky scroll spacer ════════════════════ */}
-      <section className="relative bg-[#07070f]" style={{ height: "calc(100vh + 3000px)" }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-          {/* Grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-          {/* Glow */}
-          <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(59,130,246,0.07), transparent 70%)" }} />
-          <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 50% 40% at 50% 50%, rgba(6,182,212,0.05), transparent 70%)" }} />
-
-          {/* Animation */}
-          <div className="absolute inset-0 z-10 translate-y-0"><IntroAnimation /></div>
-
-          {/* Top fade — hides animation behind navbar */}
-          <div className="absolute top-0 inset-x-0 h-24 z-20 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, #07070f 0%, transparent 100%)" }} />
-
-          {/* Name overlay */}
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none text-center px-4">
-            <div className="flex flex-col items-center translate-y-0">
-              <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
-                className="text-7xl sm:text-8xl md:text-[112px] font-black tracking-tighter leading-[0.88] text-white">
-                Rajat<br />Gupta
-              </motion.h1>
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.2 }}
-                className="text-[9px] tracking-[0.55em] text-white/35 uppercase mt-5 font-semibold">
-                Nova AICode Studio
-              </motion.p>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="absolute bottom-0 inset-x-0 z-30 px-8 pb-5 flex items-end justify-between">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }} className="text-xl md:text-2xl font-bold">
-              <Typewriter words={["Full-Stack Developer", "MERN Expert", "Creative Tech Studio"]} />
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs text-emerald-400 font-semibold tracking-wide">Open for Projects</span>
-            </motion.div>
-          </div>
-
-          {/* Scroll hint */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.4 }}
-            className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex flex-col items-center gap-1.5">
-            <span className="text-[8px] tracking-[0.35em] text-white/20 uppercase font-semibold">Scroll</span>
-            <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
-              <ChevronDown size={13} className="text-white/20" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* ══ HERO ══════════════════════════════════════════ */}
+      <GlobeHero />
 
       {/* ══ Content sections ══════════════════════════════ */}
       <div>
 
         {/* Stats strip */}
-        <div className="border-y border-white/[0.06] bg-[#09091a]">
+        <div className="border-y border-gray-200 bg-gray-50">
           <div className="max-w-5xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { num: "5+",  label: "Years Experience"   },
@@ -346,35 +324,35 @@ export default function Portfolio() {
               { num: "15+", label: "Technologies"       },
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 0.08} className="text-center">
-                <p className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-1">{s.num}</p>
-                <p className="text-[10px] text-gray-600 uppercase tracking-[0.15em] font-semibold">{s.label}</p>
+                <p className="text-4xl font-black bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent mb-1">{s.num}</p>
+                <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-semibold">{s.label}</p>
               </Reveal>
             ))}
           </div>
         </div>
 
         {/* ── About ──────────────────────────────────────── */}
-        <section id="about" className="pt-20 pb-10 border-b border-white/[0.05]">
+        <section id="about" className="pt-20 pb-10 border-b border-gray-100 scroll-mt-20">
           <div className="max-w-3xl mx-auto px-6">
             <Reveal>
               <SectionBadge>About Nova AICode Studio</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-white leading-[1.1] mb-6">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6">
                 We build digital products<br />
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent">
                   that actually perform.
                 </span>
               </h2>
-              <p className="text-gray-400 leading-relaxed mb-4 text-[15px]">
+              <p className="text-gray-500 leading-relaxed mb-4 text-[15px]">
                 Nova AICode Studio is a full-service creative tech agency delivering high-performance web applications,
                 AI-powered products, e-commerce solutions, SEO strategies, and creative digital content — all led by{" "}
-                <span className="text-white font-semibold">Rajat Gupta</span>.
+                <span className="text-gray-900 font-semibold">Rajat Gupta</span>.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8 text-sm">
                 Whether you need a high-performance web app, an AI-powered product, or a complete digital presence —
                 we deliver end-to-end, on time and on brief.
               </p>
               <a href="#contact"
-                className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                className="inline-flex items-center gap-1.5 text-xs text-[#FF7A1A] hover:text-[#FF7A1A]/80 font-semibold transition-colors">
                 Let&apos;s talk <ArrowRight size={12} />
               </a>
 
@@ -386,10 +364,10 @@ export default function Portfolio() {
                   { num: "8",   label: "Services Offered",     sub: "Code to creative"          },
                 ].map(item => (
                   <TiltCard key={item.label} tiltLimit={10} scale={1.04} effect="gravitate"
-                    className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-4 text-center hover:border-white/[0.1] transition-colors">
-                    <p className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-1">{item.num}</p>
-                    <p className="text-[11px] font-bold text-white mb-0.5">{item.label}</p>
-                    <p className="text-[10px] text-gray-600">{item.sub}</p>
+                    className="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-center hover:border-gray-200 transition-colors">
+                    <p className="text-2xl font-black bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent mb-1">{item.num}</p>
+                    <p className="text-[11px] font-bold text-gray-900 mb-0.5">{item.label}</p>
+                    <p className="text-[10px] text-gray-500">{item.sub}</p>
                   </TiltCard>
                 ))}
               </div>
@@ -399,11 +377,11 @@ export default function Portfolio() {
         </section>
 
         {/* ── Stack ──────────────────────────────────────── */}
-        <section id="stack" className="py-20 border-b border-white/[0.05] bg-[#080812]">
+        <section id="stack" className="py-20 border-b border-gray-100 bg-gray-50 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
             <Reveal className="text-center mb-10">
               <SectionBadge>Tech Stack</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-white mt-1 mb-3">Full-Spectrum Expertise</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">Full-Spectrum Expertise</h2>
               <p className="text-gray-500 max-w-sm mx-auto text-sm">From pixel to production — every layer of the stack covered.</p>
             </Reveal>
 
@@ -414,17 +392,17 @@ export default function Portfolio() {
                     tiltLimit={8}
                     scale={1.03}
                     effect="gravitate"
-                    className="group bg-[#0a0a18] border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] hover:bg-[#0d0d22] transition-colors duration-300 h-full"
+                    className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-200 hover:bg-gray-50 transition-colors duration-300 h-full"
                   >
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:bg-white/[0.07] transition-colors">
+                      <div className="w-9 h-9 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center group-hover:bg-gray-100 transition-colors">
                         <s.icon size={16} className={s.color} />
                       </div>
-                      <h3 className="font-bold text-white text-sm tracking-wide">{s.title}</h3>
+                      <h3 className="font-bold text-gray-900 text-sm tracking-wide">{s.title}</h3>
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {s.tech.map(t => (
-                        <span key={t} className="px-2.5 py-1 text-[11px] rounded-lg bg-white/[0.04] border border-white/[0.05] text-gray-400 font-medium">{t}</span>
+                        <span key={t} className="px-2.5 py-1 text-[11px] rounded-lg bg-gray-100 border border-gray-200 text-gray-600 font-medium">{t}</span>
                       ))}
                     </div>
                   </TiltCard>
@@ -435,11 +413,11 @@ export default function Portfolio() {
         </section>
 
         {/* ── Services ───────────────────────────────────── */}
-        <section id="services" className="py-20 border-b border-white/[0.05]">
+        <section id="services" className="py-20 border-b border-gray-100 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
             <Reveal className="mb-10 text-center">
               <SectionBadge>Services</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-white mt-1 mb-3">What We Deliver</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">What We Deliver</h2>
               <p className="text-gray-500 max-w-sm mx-auto text-sm">Full-service digital solutions — from code to creative, strategy to execution.</p>
             </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -455,6 +433,58 @@ export default function Portfolio() {
         {/* ── Portfolio Gallery ──────────────────────────── */}
         <PortfolioGallery />
 
+        {/* ── Blog ───────────────────────────────────────── */}
+        <section id="blog" className="py-20 border-b border-gray-100 scroll-mt-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <Reveal className="mb-10 flex items-end justify-between gap-4 flex-wrap">
+              <div>
+                <SectionBadge>Blog</SectionBadge>
+                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-2">From the Studio</h2>
+                <p className="text-gray-500 text-sm">Practical insights on development, AI, and digital strategy.</p>
+              </div>
+              <a href="/blog"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-bold hover:border-gray-400 hover:text-gray-900 transition-all shrink-0">
+                All posts <ArrowRight size={12} />
+              </a>
+            </Reveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {BLOG_POSTS.map((post, i) => (
+                <Reveal key={post.slug} delay={i * 0.07}>
+                  <a href={`/blog/${post.slug}`} className="group block h-full">
+                    <div className="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-all duration-300 bg-white hover:shadow-lg hover:shadow-gray-100 h-full flex flex-col">
+                      <div className="relative h-44 overflow-hidden bg-gray-100">
+                        <img
+                          src={post.cover}
+                          alt={post.title}
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+                      </div>
+                      <div className="p-5 flex flex-col flex-1">
+                        <div className="flex items-center gap-2 mb-3 text-[10px] text-gray-400 font-semibold">
+                          <span>{new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                          <span>·</span>
+                          <span>{post.readTime}</span>
+                        </div>
+                        <h3 className="font-black text-gray-900 text-[15px] leading-snug mb-2 group-hover:text-[#1E3A73] transition-colors flex-1">
+                          {post.title}
+                        </h3>
+                        <p className="text-[11px] text-gray-500 leading-relaxed mb-4">{post.description}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {post.tags.slice(0, 3).map(t => (
+                            <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-semibold">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Testimonials ───────────────────────────────── */}
         <TestimonialsMarquee />
 
@@ -462,11 +492,11 @@ export default function Portfolio() {
         <PricingSection />
 
         {/* ── Contact ────────────────────────────────────── */}
-        <section id="contact" className="py-20 border-t border-white/[0.05]">
+        <section id="contact" className="py-20 border-t border-gray-100 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
             <Reveal className="mb-10 text-center">
               <SectionBadge>Contact</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-white mt-1 mb-3">Let&apos;s Build Together</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">Let&apos;s Build Together</h2>
               <p className="text-gray-500 max-w-md mx-auto text-sm">
                 For inquiries, collaborations, or partnerships — let&apos;s talk about what we can build together.
               </p>
@@ -486,7 +516,7 @@ export default function Portfolio() {
                 formSectionClassName="p-8"
               >
                 <div className="w-full">
-                  <h3 className="text-lg font-bold text-white mb-1">Send a Message</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Send a Message</h3>
                   <p className="text-sm text-gray-500 mb-6">Tell me about your project and I&apos;ll get back to you.</p>
                   <ContactForm />
                 </div>
@@ -496,7 +526,7 @@ export default function Portfolio() {
         </section>
 
         {/* ── Footer ─────────────────────────────────────── */}
-        <footer className="bg-[#05050d] border-t border-white/[0.06]">
+        <footer className="bg-gray-900 border-t border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/[0.05]">
 
@@ -506,17 +536,17 @@ export default function Portfolio() {
                   <img src="/logo.png" alt="Nova AI Logo" className="w-8 h-8 rounded-lg object-cover" />
                   <div>
                     <p className="text-[11px] font-black tracking-widest text-white leading-none">NOVA</p>
-                    <p className="text-[8px] tracking-[0.25em] text-gray-600 leading-none uppercase mt-0.5">AICode Studio</p>
+                    <p className="text-[8px] tracking-[0.25em] text-gray-400 leading-none uppercase mt-0.5">AICode Studio</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-400 leading-relaxed">
                   Full-stack · AI · Creative digital services, worldwide.
                 </p>
               </div>
 
               {/* Navigation */}
               <div>
-                <p className="text-[9px] font-black text-gray-700 uppercase tracking-[0.25em] mb-5">Navigation</p>
+                <p className="text-[9px] font-black text-gray-500 uppercase tracking-[0.25em] mb-5">Navigation</p>
                 <div className="space-y-3">
                   {[
                     { label: "About",      href: "#about"     },
@@ -527,35 +557,35 @@ export default function Portfolio() {
                     { label: "Contact",    href: "#contact"   },
                   ].map(t => (
                     <a key={t.label} href={t.href}
-                      className="block text-sm text-gray-600 hover:text-gray-300 transition-colors">{t.label}</a>
+                      className="block text-sm text-gray-400 hover:text-gray-300 transition-colors">{t.label}</a>
                   ))}
                 </div>
               </div>
 
               {/* Services */}
               <div>
-                <p className="text-[9px] font-black text-gray-700 uppercase tracking-[0.25em] mb-5">Services</p>
+                <p className="text-[9px] font-black text-gray-500 uppercase tracking-[0.25em] mb-5">Services</p>
                 <div className="space-y-3">
                   {["Full-Stack Development", "AI Integration", "E-Commerce & CMS", "SEO Optimization", "Video Production", "Event Card Design"].map(t => (
-                    <p key={t} className="text-sm text-gray-600">{t}</p>
+                    <p key={t} className="text-sm text-gray-400">{t}</p>
                   ))}
                 </div>
               </div>
 
               {/* Tech */}
               <div>
-                <p className="text-[9px] font-black text-gray-700 uppercase tracking-[0.25em] mb-5">Tech Stack</p>
+                <p className="text-[9px] font-black text-gray-500 uppercase tracking-[0.25em] mb-5">Tech Stack</p>
                 <div className="space-y-3">
                   {["React · Next.js · Vue · Nuxt", "Node · Express · NestJS", "MongoDB · PostgreSQL", "AWS · Shopify · WordPress", "OpenAI · LangChain · Runway"].map(t => (
-                    <p key={t} className="text-sm text-gray-600">{t}</p>
+                    <p key={t} className="text-sm text-gray-400">{t}</p>
                   ))}
                 </div>
               </div>
             </div>
 
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <p className="text-xs text-gray-700">© 2026 Nova AICode Studio · All rights reserved · Rajat Gupta</p>
-              <p className="text-[9px] text-gray-800 uppercase tracking-[0.25em] font-bold">Full-Stack · AI · Creative</p>
+              <p className="text-xs text-gray-500">© 2026 Nova AICode Studio · All rights reserved · Rajat Gupta</p>
+              <p className="text-[9px] text-gray-600 uppercase tracking-[0.25em] font-bold">Full-Stack · AI · Creative</p>
             </div>
           </div>
         </footer>

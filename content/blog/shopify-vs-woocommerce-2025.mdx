@@ -1,0 +1,77 @@
+---
+title: "Shopify vs WooCommerce in 2025: A Developer's Honest Take"
+date: "2025-03-28"
+description: "After migrating 10+ stores both ways, here's the unfiltered truth about which platform wins — and when."
+tags: ["Shopify", "E-Commerce", "WooCommerce"]
+readTime: "6 min read"
+cover: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80"
+---
+
+## The Question Everyone Gets Wrong
+
+"Should I use Shopify or WooCommerce?" is usually the wrong question. The right question is: **what does your business actually need in the next 18 months?**
+
+I've migrated stores from WooCommerce to Shopify, from Shopify to WooCommerce, and built fresh on both. Here's the honest breakdown.
+
+## Where Shopify Wins
+
+### Speed to revenue
+A properly configured Shopify store can be live and taking payments in a day. WooCommerce requires hosting setup, plugin configuration, payment gateway integration, and security hardening before you sell a single product.
+
+For a client launching a new product line with a hard deadline, Shopify is almost always the right call.
+
+### Reliability at scale
+Shopify handles hosting, CDN, PCI compliance, and uptime. During Black Friday 2024, my WooCommerce clients were sweating server load — my Shopify clients weren't thinking about infrastructure at all.
+
+### Checkout conversion
+Shopify's native checkout converts at roughly 15–36% (their published data). It's battle-tested, fast, and supports Shop Pay, which has a documented 50% higher checkout conversion for returning customers.
+
+```liquid
+{% comment %} Shopify's one-page checkout — you get this for free {% endcomment %}
+{% render 'checkout-button', product: product %}
+```
+
+### The ecosystem
+3,000+ apps. Most business problems have a $20/month Shopify app solution. The cost adds up, but so does developer time.
+
+## Where WooCommerce Wins
+
+### Total ownership and flexibility
+You own your data, your code, your server. No platform can change their pricing model, remove a feature, or shut down your store. For some businesses, this matters enormously.
+
+### Complex custom logic
+Need a quote system where pricing depends on 12 variables, integrates with a proprietary ERP, and sends PDFs to a custom workflow? WooCommerce with custom plugins handles this. Shopify's checkout customisation (even with Checkout Extensions) has real limits.
+
+### Cost at volume
+Shopify takes 0.5–2% of every transaction unless you use Shopify Payments (which isn't available everywhere). On $500k+ annual revenue, those basis points add up to serious money. WooCommerce payment processing fees go directly to your processor.
+
+### Content-heavy stores
+If you're running a store where editorial content is as important as the product catalogue, WordPress + WooCommerce gives you a proper CMS. Shopify's blog is an afterthought.
+
+## The Migration Reality
+
+I've migrated stores in both directions. The honest truth:
+
+**WooCommerce → Shopify** is generally cleaner. Products, customers, and orders migrate well. The pain points are custom shipping logic and anything that relied on bespoke WordPress plugins.
+
+**Shopify → WooCommerce** is harder than people expect. Shopify's export format is inconsistent, metafields are a mess to migrate, and you're now responsible for everything Shopify was handling silently.
+
+## My Decision Framework
+
+| Situation | Recommendation |
+|-----------|---------------|
+| New store, non-technical founder | Shopify |
+| < $50k/year revenue | Shopify |
+| $50k–$500k/year revenue | Either — evaluate custom needs |
+| > $500k/year, custom checkout logic | WooCommerce or Shopify Plus |
+| Strong content + commerce mix | WooCommerce |
+| International, multi-currency | Shopify Markets |
+| Existing WordPress site | WooCommerce (avoid the migration) |
+
+## The Line I Always Give Clients
+
+Shopify rents you a world-class shop on a perfect street. WooCommerce sells you the land to build whatever you want. Neither is wrong — it depends whether you want to run a business or build a platform.
+
+Most early-stage businesses should rent. Most established businesses with specific needs should own.
+
+If you're not sure which applies to you, [let's talk through it](/contact).
