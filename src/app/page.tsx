@@ -9,6 +9,7 @@ import {
   Globe, Star, ArrowRight, Menu, X,
   Sparkles, ChevronDown, Phone, MapPin,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
 import GlobeHero from "@/components/globe-hero";
 import { ContactCard } from "@/components/contact-card";
@@ -16,6 +17,7 @@ import { TiltCard } from "@/components/ui/tilt-card";
 import PricingSection from "@/components/ui/pricing-section";
 import TestimonialsMarquee from "@/components/team";
 import PortfolioGallery from "@/components/ui/portfolio-gallery";
+import { PersonalLanding } from "@/components/ui/personal-landing";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -79,7 +81,7 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
 
 // ─── Service card ─────────────────────────────────────────
 function ServiceCard({ icon: Icon, title, description, tags, num }: {
-  icon: React.ElementType; title: string; description: string;
+  icon: LucideIcon; title: string; description: string;
   tags: string[]; num: string;
 }) {
   return (
@@ -235,13 +237,13 @@ const BLOG_POSTS = [
   },
 ]
 
-const STACK = [
-  { icon: MonitorSmartphone, title: "Frontend",        color: "text-[#1E3A73]",   tech: ["React.js", "Next.js", "Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS"] },
-  { icon: Server,            title: "Backend",         color: "text-violet-400",  tech: ["Node.js", "Express.js", "NestJS", "Django", "FastAPI", "REST API"] },
-  { icon: Database,          title: "Databases",       color: "text-cyan-400",    tech: ["MongoDB", "PostgreSQL", "MySQL"] },
-  { icon: Cloud,             title: "Cloud & DevOps",  color: "text-emerald-400", tech: ["AWS S3", "AWS EC2", "Lambda", "Postman", "Vercel"] },
-  { icon: ShoppingBag,       title: "E-Commerce",      color: "text-pink-400",    tech: ["Shopify", "Liquid", "WordPress", "WooCommerce"] },
-  { icon: Star,              title: "Ecosystem",       color: "text-amber-400",   tech: ["MERN Stack", "Git", "CI/CD", "REST", "GraphQL"] },
+const STACK: { icon: LucideIcon; title: string; color: string; tech: string[] }[] = [
+  { icon: MonitorSmartphone, title: "Frontend",        color: "text-[#1E3A73]",   tech: ["React.js", "Next.js", "Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS", "Bootstrap"] },
+  { icon: Server,            title: "Backend",         color: "text-violet-400",  tech: ["Node.js", "Express.js", "Django", "Flask", "FastAPI", "REST API"] },
+  { icon: Database,          title: "Databases",       color: "text-cyan-400",    tech: ["MongoDB", "PostgreSQL", "MySQL", "SQLite"] },
+  { icon: Cloud,             title: "Tools & DevOps",  color: "text-emerald-400", tech: ["Docker", "Redis", "Git", "Postman", "Selenium", "Vercel"] },
+  { icon: ShoppingBag,       title: "E-Commerce",      color: "text-pink-400",    tech: ["Shopify", "Liquid", "WordPress", "WooCommerce", "PHP"] },
+  { icon: Star,              title: "Ecosystem",       color: "text-amber-400",   tech: ["MERN Stack", "MEAN Stack", "Python", "CI/CD", "GraphQL"] },
 ];
 
 // ─── Page ─────────────────────────────────────────────────
@@ -524,6 +526,9 @@ export default function Portfolio() {
             </Reveal>
           </div>
         </section>
+
+        {/* ── Owner card ─────────────────────────────────── */}
+        <PersonalLanding />
 
         {/* ── Footer ─────────────────────────────────────── */}
         <footer className="bg-gray-900 border-t border-white/[0.06]">
