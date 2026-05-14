@@ -1,5 +1,6 @@
 import "./globals.css";
 import SplashScreen from "@/components/splash-screen";
+import ChatWidget from "@/components/ui/chat-widget";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SplashScreen />
         {children}
+        <ChatWidget />
       </body>
     </html>
   );

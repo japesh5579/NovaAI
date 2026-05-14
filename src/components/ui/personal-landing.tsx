@@ -139,7 +139,7 @@ const ConnectSection: React.FC = () => {
           type="submit"
           disabled={!message.trim()}
           className={twMerge(
-            "inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] px-7 py-3 text-base font-semibold text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all",
+            "inline-flex items-center gap-2 rounded-full bg-[#FF7A1A] px-7 py-3 text-base font-semibold text-white shadow-lg hover:bg-[#FF7A1A]/90 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all",
             message.trim() ? "hover:scale-105 hover:shadow-xl cursor-pointer opacity-100" : "opacity-50 cursor-not-allowed"
           )}
         >
@@ -153,7 +153,7 @@ const ConnectSection: React.FC = () => {
 
 export const PersonalLanding: React.FC = () => (
   <div className="w-full flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 px-6 py-20 text-zinc-50 relative overflow-hidden">
-    <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-[#FF7A1A] via-orange-400 to-[#1E3A73] opacity-15 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
+    <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-[#FF7A1A] via-orange-400 to-orange-600 opacity-15 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
     <div className="w-full max-w-2xl flex flex-col items-center gap-12 z-10">
       <HeroSection />
       <AboutBlock />

@@ -307,10 +307,10 @@ function RoleCycler() {
 // ── Hero section ──────────────────────────────────────────────────────────────
 export default function GlobeHero() {
   return (
-    <section className="relative h-screen w-full bg-white overflow-hidden flex items-center">
+    <section className="relative h-screen w-full bg-background overflow-hidden flex items-center">
 
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-100/60 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-100/60 dark:bg-blue-900/20 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-4">
 
@@ -319,17 +319,17 @@ export default function GlobeHero() {
 
           <div className="flex flex-col gap-1 leading-none tracking-tighter mt-8">
             {[
-              { word: "Build",    color: "#111827" },
-              { word: "Innovate", color: "#FF7A1A" },
-              { word: "Grow",     color: "#1E3A73" },
-            ].map(({ word, color }, i) => (
+              { word: "Build",    color: "",         cls: "text-gray-900 dark:text-white" },
+              { word: "Innovate", color: "#FF7A1A",  cls: "" },
+              { word: "Grow",     color: "#1E3A73",  cls: "" },
+            ].map(({ word, color, cls }, i) => (
               <motion.p
                 key={word}
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[clamp(3.5rem,10vw,7.5rem)] font-black"
-                style={{ color }}
+                className={`text-[clamp(3.5rem,10vw,7.5rem)] font-black ${cls}`}
+                style={color ? { color } : undefined}
               >
                 {word}
               </motion.p>
@@ -353,7 +353,7 @@ export default function GlobeHero() {
               Let&apos;s Talk <ArrowRight size={14} />
             </a>
             <a href="#services"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-semibold hover:border-gray-400 hover:text-gray-900 transition-all">
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-white transition-all">
               View Services
             </a>
           </motion.div>

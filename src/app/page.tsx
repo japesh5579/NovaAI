@@ -18,6 +18,7 @@ import PricingSection from "@/components/ui/pricing-section";
 import TestimonialsMarquee from "@/components/team";
 import PortfolioGallery from "@/components/ui/portfolio-gallery";
 import { PersonalLanding } from "@/components/ui/personal-landing";
+import { ThemeToggle } from "@/components/ui/curtain-theme-toggle";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -89,17 +90,17 @@ function ServiceCard({ icon: Icon, title, description, tags, num }: {
       tiltLimit={8}
       scale={1.03}
       effect="gravitate"
-      className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#1E3A73]/20 hover:bg-blue-50 transition-colors duration-300 flex flex-col h-full"
+      className="group relative bg-white dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:border-[#1E3A73]/20 dark:hover:border-[#1E3A73]/40 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors duration-300 flex flex-col h-full"
     >
       <span className="absolute top-5 right-5 text-[10px] font-mono text-gray-300 group-hover:text-gray-400 transition-colors select-none">{num}</span>
       <div className="w-10 h-10 rounded-xl bg-[#1E3A73]/10 border border-[#1E3A73]/20 flex items-center justify-center mb-4 group-hover:bg-[#1E3A73]/15 transition-colors shrink-0">
         <Icon size={18} className="text-[#1E3A73]" />
       </div>
-      <h3 className="font-bold text-gray-900 text-sm mb-2 leading-snug">{title}</h3>
-      <p className="text-xs text-gray-600 leading-relaxed mb-4 flex-1">{description}</p>
+      <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm mb-2 leading-snug">{title}</h3>
+      <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-1">{description}</p>
       <div className="flex flex-wrap gap-1.5">
         {tags.map(t => (
-          <span key={t} className="px-2 py-0.5 text-[10px] rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-medium">{t}</span>
+          <span key={t} className="px-2 py-0.5 text-[10px] rounded-md bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-medium">{t}</span>
         ))}
       </div>
     </TiltCard>
@@ -140,8 +141,8 @@ function ContactForm() {
       setSending(false);
     }
   };
-  const fieldCls = "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl h-11";
-  const labelCls = "text-[10px] font-bold tracking-[0.15em] uppercase text-gray-500";
+  const fieldCls = "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl h-11";
+  const labelCls = "text-[10px] font-bold tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400";
   if (sent) return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
       className="flex flex-col items-center justify-center gap-4 py-12 text-center w-full">
@@ -182,7 +183,7 @@ function ContactForm() {
         <Label htmlFor="cf-msg" className={labelCls}>Message</Label>
         <Textarea id="cf-msg" required placeholder="Tell me about your project…" value={form.message}
           onChange={e => setForm({ ...form, message: e.target.value })} rows={4}
-          className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl resize-none" />
+          className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#1E3A73]/30 focus-visible:border-[#1E3A73]/40 rounded-xl resize-none" />
       </div>
       <Button type="submit" disabled={sending}
         className="w-full h-11 bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] hover:from-[#FF7A1A]/90 hover:to-[#1E3A73]/90 text-white border-0 font-bold rounded-xl shadow-lg shadow-[#1E3A73]/20 transition-all">
@@ -197,14 +198,14 @@ function ContactForm() {
 
 // ─── Data ─────────────────────────────────────────────────
 const SERVICES = [
-  { icon: Code2,        title: "Full-Stack Dev",       description: "End-to-end MERN apps, SPAs, server-rendered Next.js. Production-ready & scalable.",  tags: ["React", "Next.js", "Node", "TS"],      num: "01" },
-  { icon: BrainCircuit, title: "AI Integration",       description: "Embed LLMs, generative AI and automation seamlessly into your product.",              tags: ["OpenAI", "LangChain", "Runway"],       num: "02" },
-  { icon: ShoppingBag,  title: "E-Commerce & CMS",     description: "Custom Shopify stores, WordPress sites, WooCommerce & Liquid templating.",            tags: ["Shopify", "WordPress", "WooCommerce"], num: "03" },
-  { icon: BarChart2,    title: "SEO Optimization",     description: "On-page, technical SEO, structured data, metadata, Core Web Vitals.",                 tags: ["Tech SEO", "Schema", "Speed"],         num: "04" },
-  { icon: Tv,           title: "YouTube Growth",       description: "Channel strategy, video SEO, thumbnails, analytics and content calendar.",            tags: ["Video SEO", "Thumbnails", "Analytics"],num: "05" },
-  { icon: Palette,      title: "Event Card Design",    description: "Elegant print-ready wedding invitations, memorial programs and stationery.",          tags: ["Wedding", "Memorial", "Print-ready"],  num: "06" },
-  { icon: Clapperboard, title: "AI Video Generation",  description: "AI-powered video creation with Runway, Sora, Kling, and Pika.",                       tags: ["Runway", "Sora", "Kling", "Pika"],    num: "07" },
-  { icon: Film,         title: "Video Editing",        description: "Professional editing, color grading, captions for short & long-form content.",        tags: ["Color Grading", "Reels", "Captions"], num: "08" },
+  { icon: Code2,        title: "Full-Stack Dev",       description: "End-to-end MERN apps, SPAs, server-rendered Next.js. Production-ready & scalable.",  tags: ["React", "Next.js", "Node", "TS"],        stackLabel: "Tech Stack", num: "01" },
+  { icon: BrainCircuit, title: "AI Integration",       description: "Embed LLMs, generative AI and automation seamlessly into your product.",              tags: ["OpenAI", "LangChain", "Python", "APIs"],  stackLabel: "Tech Stack", num: "02" },
+  { icon: ShoppingBag,  title: "E-Commerce & CMS",     description: "Custom Shopify stores, WordPress sites, WooCommerce & Liquid templating.",            tags: ["Shopify", "WordPress", "WooCommerce"],    stackLabel: "Platforms",  num: "03" },
+  { icon: BarChart2,    title: "SEO Optimization",     description: "On-page, technical SEO, structured data, metadata, Core Web Vitals.",                 tags: ["On-Page", "Schema", "Core Web Vitals"],   stackLabel: "Focus Areas",num: "04" },
+  { icon: Tv,           title: "YouTube Growth",       description: "Channel strategy, video SEO, thumbnails, analytics and content calendar.",            tags: ["Video SEO", "Thumbnails", "Analytics"],  stackLabel: "Specialties",num: "05" },
+  { icon: Palette,      title: "Event Card Design",    description: "Elegant print-ready wedding invitations, memorial programs and stationery.",          tags: ["Wedding", "Memorial", "Print-ready"],    stackLabel: "Deliverables",num: "06" },
+  { icon: Clapperboard, title: "AI Video Generation",  description: "AI-powered video creation with Runway, Sora, Kling, and Pika.",                       tags: ["Runway", "Sora", "Kling", "Pika"],       stackLabel: "Tools",      num: "07" },
+  { icon: Film,         title: "Video Editing",        description: "Professional editing, color grading, captions for short & long-form content.",        tags: ["Premiere Pro", "DaVinci", "After Effects"], stackLabel: "Tools",   num: "08" },
 ];
 
 const BLOG_POSTS = [
@@ -257,14 +258,14 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const NAV = ["About", "Stack", "Services", "Portfolio", "Blog", "Pricing", "Contact"];
+  const NAV = ["About", "Services", "Portfolio", "Blog", "Pricing", "Contact"];
 
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-background text-foreground min-h-screen">
 
       {/* ── Nav ───────────────────────────────────────── */}
       <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-white/90 backdrop-blur-2xl border-b border-gray-200 py-3" : "py-5"
+        scrolled ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl border-b border-gray-200 dark:border-gray-700 py-3" : "py-5"
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center">
 
@@ -285,25 +286,29 @@ export default function Portfolio() {
             className="hidden md:flex items-center gap-7">
             {NAV.map(n => (
               <a key={n} href={n === "Blog" ? "/blog" : `#${n.toLowerCase()}`}
-                className="text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-gray-900 transition-colors duration-200 font-semibold">
+                className="text-[11px] tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 font-semibold">
                 {n}
               </a>
             ))}
+            <ThemeToggle variant="icon" defaultTheme="light" duration={600} buttonSize={34} />
           </motion.nav>
 
-          <button className="md:hidden text-gray-500 hover:text-gray-900 ml-auto" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2 ml-auto">
+            <ThemeToggle variant="icon" defaultTheme="light" duration={600} buttonSize={32} />
+            <button className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
           {menuOpen && (
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
-              className="md:hidden bg-white border-t border-gray-200 px-6 py-5 flex flex-col gap-4">
+              className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 px-6 py-5 flex flex-col gap-4">
               {NAV.map(n => (
                 <a key={n} href={n === "Blog" ? "/blog" : `#${n.toLowerCase()}`} onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">{n}</a>
+                  className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">{n}</a>
               ))}
             </motion.div>
           )}
@@ -317,7 +322,7 @@ export default function Portfolio() {
       <div>
 
         {/* Stats strip */}
-        <div className="border-y border-gray-200 bg-gray-50">
+        <div className="border-y border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60">
           <div className="max-w-5xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { num: "5+",  label: "Years Experience"   },
@@ -327,29 +332,29 @@ export default function Portfolio() {
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 0.08} className="text-center">
                 <p className="text-4xl font-black bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent mb-1">{s.num}</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-semibold">{s.label}</p>
+                <p className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-[0.15em] font-semibold">{s.label}</p>
               </Reveal>
             ))}
           </div>
         </div>
 
         {/* ── About ──────────────────────────────────────── */}
-        <section id="about" className="pt-20 pb-10 border-b border-gray-100 scroll-mt-20">
+        <section id="about" className="pt-20 pb-10 border-b border-gray-100 dark:border-gray-800 scroll-mt-20">
           <div className="max-w-3xl mx-auto px-6">
             <Reveal>
               <SectionBadge>About Nova AICode Studio</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 leading-[1.1] mb-6">
                 We build digital products<br />
                 <span className="bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent">
                   that actually perform.
                 </span>
               </h2>
-              <p className="text-gray-500 leading-relaxed mb-4 text-[15px]">
+              <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-[15px]">
                 Nova AICode Studio is a full-service creative tech agency delivering high-performance web applications,
                 AI-powered products, e-commerce solutions, SEO strategies, and creative digital content — all led by{" "}
-                <span className="text-gray-900 font-semibold">Rajat Gupta</span>.
+                <span className="text-gray-900 dark:text-gray-100 font-semibold">Rajat Gupta</span>.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-8 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-sm">
                 Whether you need a high-performance web app, an AI-powered product, or a complete digital presence —
                 we deliver end-to-end, on time and on brief.
               </p>
@@ -357,78 +362,52 @@ export default function Portfolio() {
                 className="inline-flex items-center gap-1.5 text-xs text-[#FF7A1A] hover:text-[#FF7A1A]/80 font-semibold transition-colors">
                 Let&apos;s talk <ArrowRight size={12} />
               </a>
-
-              {/* Highlight grid */}
-              <div className="grid grid-cols-3 gap-3 mt-10">
-                {[
-                  { num: "5+",  label: "Years of Experience",  sub: "Full-stack & creative"    },
-                  { num: "50+", label: "Projects Delivered",   sub: "On time, on brief"         },
-                  { num: "8",   label: "Services Offered",     sub: "Code to creative"          },
-                ].map(item => (
-                  <TiltCard key={item.label} tiltLimit={10} scale={1.04} effect="gravitate"
-                    className="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-center hover:border-gray-200 transition-colors">
-                    <p className="text-2xl font-black bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent mb-1">{item.num}</p>
-                    <p className="text-[11px] font-bold text-gray-900 mb-0.5">{item.label}</p>
-                    <p className="text-[10px] text-gray-500">{item.sub}</p>
-                  </TiltCard>
-                ))}
-              </div>
             </Reveal>
           </div>
 
         </section>
 
-        {/* ── Stack ──────────────────────────────────────── */}
-        <section id="stack" className="py-20 border-b border-gray-100 bg-gray-50 scroll-mt-20">
+        {/* ── Stack + Services (combined) ─────────────────── */}
+        <section id="services" className="py-20 border-b border-gray-100 dark:border-gray-800 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
-            <Reveal className="text-center mb-10">
-              <SectionBadge>Tech Stack</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">Full-Spectrum Expertise</h2>
-              <p className="text-gray-500 max-w-sm mx-auto text-sm">From pixel to production — every layer of the stack covered.</p>
+
+            {/* Header */}
+            <Reveal className="text-center mb-12">
+              <SectionBadge>Services & Stack</SectionBadge>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mt-1 mb-3">
+                What We Deliver
+              </h2>
+              <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto text-sm">
+                Full-service digital solutions backed by a full-spectrum tech stack — from code to creative.
+              </p>
             </Reveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {STACK.map((s, i) => (
-                <Reveal key={s.title} delay={i * 0.07}>
-                  <TiltCard
-                    tiltLimit={8}
-                    scale={1.03}
-                    effect="gravitate"
-                    className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-200 hover:bg-gray-50 transition-colors duration-300 h-full"
-                  >
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-9 h-9 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center group-hover:bg-gray-100 transition-colors">
-                        <s.icon size={16} className={s.color} />
-                      </div>
-                      <h3 className="font-bold text-gray-900 text-sm tracking-wide">{s.title}</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {s.tech.map(t => (
-                        <span key={t} className="px-2.5 py-1 text-[11px] rounded-lg bg-gray-100 border border-gray-200 text-gray-600 font-medium">{t}</span>
-                      ))}
-                    </div>
-                  </TiltCard>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Services ───────────────────────────────────── */}
-        <section id="services" className="py-20 border-b border-gray-100 scroll-mt-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <Reveal className="mb-10 text-center">
-              <SectionBadge>Services</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">What We Deliver</h2>
-              <p className="text-gray-500 max-w-sm mx-auto text-sm">Full-service digital solutions — from code to creative, strategy to execution.</p>
-            </Reveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* ── Services grid with inline tech stack ── */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {SERVICES.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.04}>
-                  <ServiceCard {...s} />
+                  <TiltCard tiltLimit={8} scale={1.03} effect="gravitate"
+                    className="group flex flex-col items-center text-center bg-white dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 hover:border-[#1E3A73]/25 dark:hover:border-[#1E3A73]/40 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-colors duration-300 h-full">
+                    {/* Icon */}
+                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/40 mb-4 group-hover:border-[#1E3A73]/20 transition-colors shrink-0">
+                      <s.icon size={22} className="text-[#1E3A73] dark:text-blue-400" />
+                    </div>
+                    <h3 className="font-black text-gray-900 dark:text-gray-100 text-[13px] mb-1.5 leading-snug">{s.title}</h3>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400 leading-relaxed mb-3 flex-1">{s.description}</p>
+                    {/* Tech stack */}
+                    <div className="w-full border-t border-gray-100 dark:border-gray-700 pt-3 mt-auto">
+                      <p className="text-[8px] font-black tracking-[0.18em] uppercase text-gray-400 dark:text-gray-500 mb-2">{s.stackLabel}</p>
+                      <div className="flex flex-wrap gap-1 justify-center">
+                        {s.tags.map(t => (
+                          <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-medium">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </TiltCard>
                 </Reveal>
               ))}
             </div>
+
           </div>
         </section>
 
@@ -436,16 +415,16 @@ export default function Portfolio() {
         <PortfolioGallery />
 
         {/* ── Blog ───────────────────────────────────────── */}
-        <section id="blog" className="py-20 border-b border-gray-100 scroll-mt-20">
+        <section id="blog" className="py-20 border-b border-gray-100 dark:border-gray-800 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
             <Reveal className="mb-10 flex items-end justify-between gap-4 flex-wrap">
               <div>
                 <SectionBadge>Blog</SectionBadge>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-2">From the Studio</h2>
-                <p className="text-gray-500 text-sm">Practical insights on development, AI, and digital strategy.</p>
+                <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mt-1 mb-2">From the Studio</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Practical insights on development, AI, and digital strategy.</p>
               </div>
               <a href="/blog"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-bold hover:border-gray-400 hover:text-gray-900 transition-all shrink-0">
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 text-xs font-bold hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-all shrink-0">
                 All posts <ArrowRight size={12} />
               </a>
             </Reveal>
@@ -454,28 +433,28 @@ export default function Portfolio() {
               {BLOG_POSTS.map((post, i) => (
                 <Reveal key={post.slug} delay={i * 0.07}>
                   <a href={`/blog/${post.slug}`} className="group block h-full">
-                    <div className="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-all duration-300 bg-white hover:shadow-lg hover:shadow-gray-100 h-full flex flex-col">
-                      <div className="relative h-44 overflow-hidden bg-gray-100">
+                    <div className="border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 bg-white dark:bg-gray-800/60 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900/40 h-full flex flex-col">
+                      <div className="relative h-44 overflow-hidden bg-gray-100 dark:bg-gray-800">
                         <img
                           src={post.cover}
                           alt={post.title}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                          className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-gray-900/60 to-transparent" />
                       </div>
                       <div className="p-5 flex flex-col flex-1">
-                        <div className="flex items-center gap-2 mb-3 text-[10px] text-gray-400 font-semibold">
+                        <div className="flex items-center gap-2 mb-3 text-[10px] text-gray-400 dark:text-gray-500 font-semibold">
                           <span>{new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                           <span>·</span>
                           <span>{post.readTime}</span>
                         </div>
-                        <h3 className="font-black text-gray-900 text-[15px] leading-snug mb-2 group-hover:text-[#1E3A73] transition-colors flex-1">
+                        <h3 className="font-black text-gray-900 dark:text-gray-100 text-[15px] leading-snug mb-2 group-hover:text-[#1E3A73] dark:group-hover:text-[#6b9ef5] transition-colors flex-1">
                           {post.title}
                         </h3>
-                        <p className="text-[11px] text-gray-500 leading-relaxed mb-4">{post.description}</p>
+                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-4">{post.description}</p>
                         <div className="flex flex-wrap gap-1.5">
                           {post.tags.slice(0, 3).map(t => (
-                            <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-semibold">{t}</span>
+                            <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-semibold">{t}</span>
                           ))}
                         </div>
                       </div>
@@ -494,12 +473,12 @@ export default function Portfolio() {
         <PricingSection />
 
         {/* ── Contact ────────────────────────────────────── */}
-        <section id="contact" className="py-20 border-t border-gray-100 scroll-mt-20">
+        <section id="contact" className="py-20 border-t border-gray-100 dark:border-gray-800 scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6">
             <Reveal className="mb-10 text-center">
               <SectionBadge>Contact</SectionBadge>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">Let&apos;s Build Together</h2>
-              <p className="text-gray-500 max-w-md mx-auto text-sm">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mt-1 mb-3">Let&apos;s Build Together</h2>
+              <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto text-sm">
                 For inquiries, collaborations, or partnerships — let&apos;s talk about what we can build together.
               </p>
             </Reveal>
@@ -518,8 +497,8 @@ export default function Portfolio() {
                 formSectionClassName="p-8"
               >
                 <div className="w-full">
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">Send a Message</h3>
-                  <p className="text-sm text-gray-500 mb-6">Tell me about your project and I&apos;ll get back to you.</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Send a Message</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Tell me about your project and I&apos;ll get back to you.</p>
                   <ContactForm />
                 </div>
               </ContactCard>
@@ -554,9 +533,8 @@ export default function Portfolio() {
                 <p className="text-[9px] font-black text-gray-500 uppercase tracking-[0.25em] mb-5">Navigation</p>
                 <div className="space-y-3">
                   {[
-                    { label: "About",      href: "#about"     },
-                    { label: "Tech Stack", href: "#stack"     },
-                    { label: "Services",   href: "#services"  },
+                    { label: "About",    href: "#about"    },
+                    { label: "Services", href: "#services" },
                     { label: "Portfolio",  href: "#portfolio" },
                     { label: "Pricing",    href: "#pricing"   },
                     { label: "Contact",    href: "#contact"   },

@@ -45,7 +45,7 @@ export default function BlogPage() {
                   <img
                     src={posts[0].cover}
                     alt={posts[0].title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                    className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20" />
                 </div>
@@ -87,7 +87,7 @@ export default function BlogPage() {
                     <img
                       src={post.cover}
                       alt={post.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                      className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
                   </div>

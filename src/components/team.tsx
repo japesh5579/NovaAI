@@ -90,7 +90,7 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
 
 export default function TestimonialsMarquee() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-20 border-b border-gray-100">
+    <section className="relative w-full overflow-hidden bg-background py-20 border-b border-gray-100 dark:border-gray-800">
 
       <svg
         className="absolute right-0 bottom-0 text-[#1E3A73]/5 pointer-events-none"
@@ -118,25 +118,25 @@ export default function TestimonialsMarquee() {
             <Sparkles size={18} className="text-white" />
           </div>
           <SectionBadge>Testimonials</SectionBadge>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 tracking-tight leading-tight mb-4">
             What Clients Say
           </h2>
-          <p className="text-gray-500 text-sm max-w-md leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-md leading-relaxed">
             Real feedback from real clients — across web apps, AI products, e-commerce, and creative work.
           </p>
         </div>
 
         {/* Marquee */}
         <div className="relative w-full">
-          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white to-transparent" />
-          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent" />
+          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-background to-transparent" />
 
           <Marquee className="[--gap:1.25rem]" pauseOnHover speed={45}>
             {testimonials.map((t) => (
               <TiltCard
                 key={t.name}
                 tiltLimit={8} scale={1.03} effect="gravitate"
-                className={`w-80 shrink-0 rounded-2xl border border-gray-200 bg-gradient-to-br ${t.accent} bg-white p-6 flex flex-col gap-4 hover:border-gray-300 transition-colors duration-300`}
+                className={`w-80 shrink-0 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br ${t.accent} bg-white dark:bg-gray-800/60 p-6 flex flex-col gap-4 hover:border-gray-300 dark:hover:border-gray-600 transition-colors duration-300`}
               >
                 {/* Stars */}
                 <div className="flex gap-0.5">
@@ -146,17 +146,17 @@ export default function TestimonialsMarquee() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-[12px] text-gray-600 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-[12px] text-gray-600 dark:text-gray-400 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
 
                 {/* Author */}
-                <div className="flex items-center gap-3 pt-1 border-t border-gray-100">
-                  <div className={`w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0`}
+                <div className="flex items-center gap-3 pt-1 border-t border-gray-100 dark:border-gray-700">
+                  <div className="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-600 flex items-center justify-center shrink-0"
                     style={{ background: "rgba(0,0,0,0.05)" }}>
-                    <span className="text-[9px] font-black text-gray-600">{t.initials}</span>
+                    <span className="text-[9px] font-black text-gray-600 dark:text-gray-400">{t.initials}</span>
                   </div>
                   <div>
-                    <p className="text-[12px] font-bold text-gray-900 leading-none">{t.name}</p>
-                    <p className="text-[10px] text-gray-500 mt-0.5">{t.role}</p>
+                    <p className="text-[12px] font-bold text-gray-900 dark:text-gray-100 leading-none">{t.name}</p>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">{t.role}</p>
                   </div>
                   <span className={`ml-auto w-1.5 h-1.5 rounded-full ${t.dot} shrink-0`} />
                 </div>

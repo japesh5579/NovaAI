@@ -138,14 +138,14 @@ export default function PortfolioGallery() {
 
   return (
     <>
-      <section id="portfolio" className="py-20 border-b border-gray-100 bg-gray-50 scroll-mt-20">
+      <section id="portfolio" className="py-20 border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-6">
 
           {/* Header */}
           <div className="mb-12 text-center">
             <SectionBadge>Portfolio</SectionBadge>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mt-1 mb-3">Work That Speaks</h2>
-            <p className="text-gray-500 max-w-sm mx-auto text-sm">Real projects. Real results. Click any card for the full case study.</p>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mt-1 mb-3">Work That Speaks</h2>
+            <p className="text-gray-500 dark:text-gray-400 max-w-sm mx-auto text-sm">Real projects. Real results. Click any card for the full case study.</p>
           </div>
 
           {/* Filters */}
@@ -157,7 +157,7 @@ export default function PortfolioGallery() {
                 className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 border ${
                   active === cat
                     ? "bg-[#1E3A73] border-[#1E3A73] text-white shadow-lg shadow-[#1E3A73]/20"
-                    : "bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-600 hover:text-gray-700 dark:hover:text-gray-200"
                 }`}
               >
                 {cat}
@@ -173,29 +173,29 @@ export default function PortfolioGallery() {
                 tiltLimit={7}
                 scale={1.02}
                 effect="gravitate"
-                className={`group cursor-pointer rounded-2xl border border-gray-200 bg-gradient-to-br ${project.accent} bg-white overflow-hidden hover:border-gray-300 transition-colors duration-300`}
+                className={`group cursor-pointer rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br ${project.accent} bg-white dark:bg-gray-800/60 overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-colors duration-300`}
               >
                 {/* Image */}
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                    className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent" />
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-gray-900/80 via-white/10 dark:via-gray-900/10 to-transparent" />
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
                     <span className={`w-1.5 h-1.5 rounded-full ${project.dot}`} />
-                    <span className="text-[9px] font-bold text-gray-700 tracking-widest uppercase">{project.category}</span>
+                    <span className="text-[9px] font-bold text-gray-700 dark:text-gray-300 tracking-widest uppercase">{project.category}</span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-5">
-                  <h3 className="font-black text-gray-900 text-[15px] mb-2 leading-snug">{project.title}</h3>
-                  <p className="text-[11px] text-gray-500 leading-relaxed mb-4">{project.description}</p>
+                  <h3 className="font-black text-gray-900 dark:text-gray-100 text-[15px] mb-2 leading-snug">{project.title}</h3>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.slice(0, 4).map(t => (
-                      <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-semibold">{t}</span>
+                      <span key={t} className="px-2 py-0.5 text-[9px] rounded-md bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-semibold">{t}</span>
                     ))}
                   </div>
                 </div>
@@ -214,50 +214,50 @@ export default function PortfolioGallery() {
           onClick={() => setSelected(null)}
         >
           <div
-            className="relative w-full max-w-2xl bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl shadow-black/20"
+            className="relative w-full max-w-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-2xl shadow-black/20"
             style={{ animation: "scaleIn 0.25s ease" }}
             onClick={e => e.stopPropagation()}
           >
             {/* Image */}
             <div className="relative h-56">
               <img src={selected.image} alt={selected.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-gray-900/80 via-white/10 dark:via-gray-900/10 to-transparent" />
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors"
               >
-                <X size={14} className="text-gray-700" />
+                <X size={14} className="text-gray-700 dark:text-gray-300" />
               </button>
               <div className="absolute bottom-4 left-5 flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full ${selected.dot}`} />
-                <span className="text-[10px] font-bold text-gray-700 tracking-widest uppercase">{selected.category}</span>
+                <span className="text-[10px] font-bold text-gray-700 dark:text-gray-300 tracking-widest uppercase">{selected.category}</span>
               </div>
             </div>
 
             {/* Body */}
             <div className="p-6">
-              <h3 className="text-2xl font-black text-gray-900 mb-3">{selected.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed mb-5">{selected.longDesc}</p>
+              <h3 className="text-2xl font-black text-gray-900 dark:text-gray-100 mb-3">{selected.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">{selected.longDesc}</p>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {selected.tags.map(t => (
-                  <span key={t} className="px-2.5 py-1 text-[10px] rounded-lg bg-gray-100 text-gray-600 border border-gray-200 font-semibold">{t}</span>
+                  <span key={t} className="px-2.5 py-1 text-[10px] rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-semibold">{t}</span>
                 ))}
               </div>
               <div className="flex gap-3">
                 {selected.live && (
                   <a href={selected.live} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E3A73] hover:bg-[#1E3A73]/90 text-white text-xs font-bold transition-colors shadow-lg shadow-[#1E3A73]/20">
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF7A1A] hover:bg-[#FF7A1A]/90 text-white text-xs font-bold transition-colors shadow-lg shadow-[#FF7A1A]/20">
                     <ExternalLink size={12} /> Live Preview
                   </a>
                 )}
                 {selected.github && (
                   <a href={selected.github} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-700 text-xs font-bold transition-colors">
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold transition-colors">
                     <GitBranch size={12} /> GitHub
                   </a>
                 )}
                 <button onClick={() => setSelected(null)}
-                  className="ml-auto px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-500 text-xs font-semibold transition-colors">
+                  className="ml-auto px-4 py-2 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-xs font-semibold transition-colors">
                   Close
                 </button>
               </div>

@@ -84,7 +84,7 @@ export default function PricingSection({
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
 
   return (
-    <section id="pricing" className="py-28 border-y border-gray-100 bg-gray-50 scroll-mt-20">
+    <section id="pricing" className="py-28 border-y border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 scroll-mt-20">
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Header */}
@@ -93,8 +93,8 @@ export default function PricingSection({
             <span className="w-1 h-1 rounded-full bg-[#FF7A1A] animate-pulse" />
             Pricing
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">{heading}</h2>
-          <p className="text-gray-500 text-sm max-w-md">{description}</p>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 leading-tight">{heading}</h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-md">{description}</p>
 
           {/* Billing toggle */}
           <div className="mt-3">
@@ -103,18 +103,18 @@ export default function PricingSection({
               onValueChange={v => setBilling(v as "monthly" | "yearly")}
               className="w-[280px]"
             >
-              <TabsList className="grid w-full grid-cols-2 bg-gray-100 border border-gray-200 rounded-xl p-1 h-auto">
+              <TabsList className="grid w-full grid-cols-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-1 h-auto">
                 <TabsTrigger
                   value="monthly"
-                  className="rounded-lg text-[11px] font-bold tracking-wide text-gray-500 py-2
-                    data-[state=active]:bg-[#1E3A73] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-[#1E3A73]/20"
+                  className="rounded-lg text-[11px] font-bold tracking-wide text-gray-500 dark:text-gray-400 py-2
+                    data-[state=active]:bg-[#FF7A1A] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-[#FF7A1A]/20"
                 >
                   Monthly
                 </TabsTrigger>
                 <TabsTrigger
                   value="yearly"
-                  className="rounded-lg text-[11px] font-bold tracking-wide text-gray-500 py-2 flex items-center gap-1.5
-                    data-[state=active]:bg-[#1E3A73] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-[#1E3A73]/20"
+                  className="rounded-lg text-[11px] font-bold tracking-wide text-gray-500 dark:text-gray-400 py-2 flex items-center gap-1.5
+                    data-[state=active]:bg-[#FF7A1A] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-[#FF7A1A]/20"
                 >
                   Yearly
                   <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.5 text-[8px] text-emerald-400 font-black leading-none">
@@ -154,8 +154,8 @@ function PricingCard({
       className={cn(
         "flex flex-col rounded-2xl border p-7 text-left transition-all duration-300",
         plan.featured
-          ? "border-[#1E3A73]/30 bg-white shadow-2xl shadow-[#1E3A73]/10 ring-1 ring-[#1E3A73]/10 scale-[1.02]"
-          : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
+          ? "border-[#FF7A1A]/30 bg-white dark:bg-gray-800 shadow-2xl shadow-[#FF7A1A]/10 ring-1 ring-[#FF7A1A]/10 scale-[1.02]"
+          : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/60 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800"
       )}
       aria-label={`${plan.title} plan`}
     >
@@ -166,8 +166,8 @@ function PricingCard({
           className={cn(
             "text-[10px] font-bold tracking-wider border-0 px-2.5",
             plan.featured
-              ? "bg-[#1E3A73] text-white"
-              : "bg-gray-100 text-gray-500"
+              ? "bg-[#FF7A1A] text-white"
+              : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
           )}
         >
           {plan.title}
@@ -182,24 +182,24 @@ function PricingCard({
       {/* Price */}
       <div className="mb-2">
         <div className="flex items-baseline gap-1.5">
-          <span className="text-4xl font-black text-gray-900">{price}</span>
+          <span className="text-4xl font-black text-gray-900 dark:text-gray-100">{price}</span>
           {!isCustom && (
-            <span className="text-xs text-gray-500 font-medium leading-tight">{period}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400 font-medium leading-tight">{period}</span>
           )}
         </div>
         {plan.description && (
-          <p className="text-xs text-gray-500 leading-relaxed mt-2">{plan.description}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2">{plan.description}</p>
         )}
       </div>
 
-      <div className="border-t border-gray-100 my-5" />
+      <div className="border-t border-gray-100 dark:border-gray-700 my-5" />
 
       {/* Features */}
       <ul className="space-y-3 flex-1">
         {plan.features.map(feature => (
           <li key={feature} className="flex items-start gap-2.5">
-            <CircleCheck className="h-4 w-4 text-[#1E3A73] shrink-0 mt-0.5" aria-hidden />
-            <span className="text-sm text-gray-600 leading-snug">{feature}</span>
+            <CircleCheck className="h-4 w-4 text-[#FF7A1A] shrink-0 mt-0.5" aria-hidden />
+            <span className="text-sm text-gray-600 dark:text-gray-400 leading-snug">{feature}</span>
           </li>
         ))}
       </ul>
@@ -212,8 +212,8 @@ function PricingCard({
             className={cn(
               "w-full font-bold h-10 rounded-xl transition-all text-sm",
               plan.featured
-                ? "bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] hover:from-[#FF7A1A]/90 hover:to-[#1E3A73]/90 text-white border-0 shadow-lg shadow-[#1E3A73]/20"
-                : "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 hover:border-gray-300"
+                ? "bg-[#FF7A1A] hover:bg-[#FF7A1A]/90 text-white border-0 shadow-lg shadow-[#FF7A1A]/20"
+                : "bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
             )}
           >
             {plan.cta} →
