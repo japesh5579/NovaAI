@@ -105,7 +105,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=700&q=80",
     accent: "from-rose-500/10 to-pink-500/5",
     dot: "bg-rose-400",
-    live: "#",
+    live: "https://ivanooo.com/",
   },
   {
     id: 8,
