@@ -101,7 +101,7 @@ export default function ChatWidget() {
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
                       m.role === "assistant"
                         ? "bg-gradient-to-br from-[#1E3A73] to-[#2a4fa0]"
-                        : "bg-gradient-to-br from-[#FF7A1A] to-[#e06010]"
+                        : "bg-gradient-to-br from-[#1E3A73] to-[#2a4fa0]"
                     }`}>
                       {m.role === "assistant"
                         ? <Bot size={12} className="text-white" />
@@ -111,7 +111,7 @@ export default function ChatWidget() {
                     <div className={`max-w-[75%] px-3.5 py-2.5 rounded-2xl text-[12.5px] leading-relaxed ${
                       m.role === "assistant"
                         ? "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-sm"
-                        : "bg-gradient-to-br from-[#FF7A1A] to-[#e06010] text-white rounded-br-sm"
+                        : "bg-gradient-to-br from-[#1E3A73] to-[#2a4fa0] text-white rounded-br-sm"
                     }`}>
                       {m.content}
                     </div>
@@ -147,12 +147,12 @@ export default function ChatWidget() {
                   <button
                     type="submit"
                     disabled={!input.trim() || loading}
-                    className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#FF7A1A] to-[#e06010] flex items-center justify-center disabled:opacity-40 transition-opacity shrink-0"
+                    className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#1E3A73] to-[#2a4fa0] flex items-center justify-center disabled:opacity-40 transition-opacity shrink-0"
                   >
                     <Send size={12} className="text-white" />
                   </button>
                 </form>
-                <p className="text-center text-[9px] text-gray-300 dark:text-gray-600 mt-1.5">Powered by Gemini · Nova AICode Studio</p>
+                <p className="text-center text-[9px] text-gray-300 dark:text-gray-600 mt-1.5">Powered by Groq · Nova AICode Studio</p>
               </div>
             </motion.div>
           )}
@@ -163,7 +163,7 @@ export default function ChatWidget() {
           onClick={() => setOpen(o => !o)}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF7A1A] to-[#1E3A73] shadow-xl shadow-[#FF7A1A]/30 flex items-center justify-center relative"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1E3A73] to-[#2a4fa0] shadow-xl shadow-[#1E3A73]/30 flex items-center justify-center relative"
         >
           <AnimatePresence mode="wait">
             {open ? (
