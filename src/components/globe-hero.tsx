@@ -227,25 +227,26 @@ function OrbitalRings({ size }: { size: number }) {
 }
 
 // ── Combined scene ────────────────────────────────────────────────────────────
-function GlobeScene() {
-  const SIZE = 520
+function GlobeScene({ size = 520 }: { size?: number }) {
+  const globeSize = Math.round(size * 0.577)
+  const globeOffset = size / 2 - globeSize / 2
 
   return (
-    <div className="relative select-none" style={{ width: SIZE, height: SIZE }}>
+    <div className="relative select-none" style={{ width: size, height: size }}>
 
       {/* 1. Dome mesh (canvas, behind everything) */}
-      <DomeMesh size={SIZE} />
+      <DomeMesh size={size} />
 
       {/* 2. Orbital rings + spheres (CSS 3D) */}
-      <OrbitalRings size={SIZE} />
+      <OrbitalRings size={size} />
 
       {/* 3. Globe in the center */}
       <div
         className="absolute"
         style={{
-          width: 300, height: 300,
-          left: SIZE / 2 - 150,
-          top:  SIZE / 2 - 150,
+          width: globeSize, height: globeSize,
+          left: globeOffset,
+          top:  globeOffset,
           zIndex: 20,
         }}
       >
@@ -306,18 +307,32 @@ function RoleCycler() {
 
 // ── Hero section ──────────────────────────────────────────────────────────────
 export default function GlobeHero() {
+  const [globeSize, setGlobeSize] = useState(520)
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      if (w < 640) setGlobeSize(260)
+      else if (w < 1024) setGlobeSize(380)
+      else setGlobeSize(520)
+    }
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
+
   return (
-    <section className="relative h-screen w-full bg-background overflow-hidden flex items-center">
+    <section className="relative min-h-screen w-full bg-background overflow-hidden flex items-center">
 
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-100/60 dark:bg-blue-900/20 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 lg:pt-0 flex flex-col lg:flex-row items-center gap-4">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-10 lg:pt-0 lg:pb-0 flex flex-col lg:flex-row items-center gap-4">
 
         {/* Left — text */}
         <div className="flex-1 flex flex-col gap-6 text-center lg:text-left lg:pl-10">
 
-          <div className="flex flex-col gap-1 leading-none tracking-tighter mt-8">
+          <div className="flex flex-col gap-1 leading-none tracking-tighter mt-4 lg:mt-8">
             {[
               { word: "Build",    color: "",         cls: "text-gray-900 dark:text-white" },
               { word: "Innovate", color: "#FF7A1A",  cls: "" },
@@ -328,7 +343,7 @@ export default function GlobeHero() {
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className={`text-[clamp(3.5rem,10vw,7.5rem)] font-black ${cls}`}
+                className={`text-[clamp(2.8rem,10vw,7.5rem)] font-black ${cls}`}
                 style={color ? { color } : undefined}
               >
                 {word}
@@ -359,13 +374,13 @@ export default function GlobeHero() {
           </motion.div>
         </div>
 
-        {/* Right — Globe scene (hidden on mobile) */}
+        {/* Globe — responsive size on all screen sizes */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.25 }}
-          className="flex-1 items-center justify-center hidden lg:flex"
+          className="flex-1 flex items-center justify-center"
         >
-          <GlobeScene />
+          <GlobeScene size={globeSize} />
         </motion.div>
 
       </div>
