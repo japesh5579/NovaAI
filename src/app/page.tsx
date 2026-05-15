@@ -517,7 +517,6 @@ export default function Portfolio() {
               {/* Brand */}
               <div className="md:col-span-1">
                 <div className="flex items-center gap-2.5 mb-5">
-                  <img src="/logo.png" alt="Nova AI Logo" className="w-8 h-8 rounded-lg object-cover" />
                   <div>
                     <p className="text-[11px] font-black tracking-widest text-white leading-none">NOVA</p>
                     <p className="text-[8px] tracking-[0.25em] text-gray-400 leading-none uppercase mt-0.5">AICode Studio</p>
