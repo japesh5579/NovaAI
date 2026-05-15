@@ -56,7 +56,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=700&q=80",
     accent: "from-pink-500/10 to-violet-500/5",
     dot: "bg-pink-400",
-    github: "#",
+    github: "https://github.com/grajat510/ai_video_audio",
   },
   {
     id: 4,
@@ -81,7 +81,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=80",
     accent: "from-amber-500/10 to-orange-500/5",
     dot: "bg-amber-400",
-    github: "#",
+    github: "https://github.com/grajat510/Interactive_Visualisation_Dashboard",
   },
   {
     id: 6,
@@ -93,7 +93,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80",
     accent: "from-violet-500/10 to-blue-500/5",
     dot: "bg-violet-400",
-    github: "#",
+    github: "https://github.com/grajat510/FastAPI_Project",
   },
   {
     id: 7,
@@ -117,7 +117,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80",
     accent: "from-orange-500/10 to-amber-500/5",
     dot: "bg-orange-400",
-    github: "#",
+    github: "https://github.com/grajat510/gericht-restaurant",
   },
 ];
 
