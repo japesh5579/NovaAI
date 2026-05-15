@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
+import Image from "next/image";
 import GlobeHero from "@/components/globe-hero";
 import { ContactCard } from "@/components/contact-card";
 import { TiltCard } from "@/components/ui/tilt-card";
@@ -435,10 +436,11 @@ export default function Portfolio() {
                   <a href={`/blog/${post.slug}`} className="group block h-full">
                     <div className="border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 bg-white dark:bg-gray-800/60 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900/40 h-full flex flex-col">
                       <div className="relative h-44 overflow-hidden bg-gray-100 dark:bg-gray-800">
-                        <img
+                        <Image
                           src={post.cover}
                           alt={post.title}
-                          className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
+                          fill
+                          className="object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-gray-900/60 to-transparent" />
                       </div>
@@ -567,7 +569,10 @@ export default function Portfolio() {
 
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
               <p className="text-xs text-gray-500">© 2026 Nova AICode Studio · All rights reserved · Rajat Gupta</p>
-              <p className="text-[9px] text-gray-600 uppercase tracking-[0.25em] font-bold">Full-Stack · AI · Creative</p>
+              <div className="flex items-center gap-4">
+                <a href="/privacy" className="text-[9px] text-gray-500 hover:text-gray-300 transition-colors uppercase tracking-[0.2em] font-bold">Privacy Policy</a>
+                <p className="text-[9px] text-gray-600 uppercase tracking-[0.25em] font-bold">Full-Stack · AI · Creative</p>
+              </div>
             </div>
           </div>
         </footer>

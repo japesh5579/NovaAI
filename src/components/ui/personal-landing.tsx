@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react"
+import Image from "next/image"
 import { twMerge } from "tailwind-merge"
 import { Video } from "lucide-react"
 import { SiGithub, SiYoutube } from "react-icons/si"
@@ -9,10 +10,12 @@ const HeroSection: React.FC = () => (
   <section className="w-full flex flex-col items-center text-center gap-6">
     <div className="relative mb-2">
       <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#FF7A1A] via-orange-400 to-[#1E3A73] opacity-60 blur-lg animate-glow" />
-      <img
+      <Image
         src="https://api.dicebear.com/8.x/lorelei-neutral/svg?seed=Rajat"
         alt="Rajat Gupta"
-        className="relative size-32 rounded-full border-4 border-zinc-800 shadow-xl z-10"
+        width={128}
+        height={128}
+        className="relative rounded-full border-4 border-zinc-800 shadow-xl z-10"
       />
     </div>
     <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg">

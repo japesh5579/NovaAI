@@ -2,6 +2,7 @@ import { getPost, getAllPosts } from "@/lib/blog"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Clock, Calendar } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -34,7 +35,7 @@ export default async function PostPage({
   if (!post) notFound()
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <main className="max-w-3xl mx-auto px-6 pt-32 pb-24">
 
         {/* Back */}
@@ -46,11 +47,13 @@ export default async function PostPage({
         </Link>
 
         {/* Cover */}
-        <div className="relative h-72 rounded-2xl overflow-hidden mb-10 bg-gray-100">
-          <img
+        <div className="relative h-72 rounded-2xl overflow-hidden mb-10 bg-gray-100 dark:bg-gray-800">
+          <Image
             src={post.cover}
             alt={post.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent" />
         </div>

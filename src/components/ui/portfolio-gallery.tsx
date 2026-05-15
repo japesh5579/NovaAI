@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { TiltCard } from "@/components/ui/tilt-card";
 import { X, ExternalLink, GitBranch, Play } from "lucide-react";
 
@@ -177,10 +178,11 @@ export default function PortfolioGallery() {
               >
                 {/* Image */}
                 <div className="relative h-44 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
+                    fill
+                    className="object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-gray-900/80 via-white/10 dark:via-gray-900/10 to-transparent" />
                   <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
@@ -220,7 +222,7 @@ export default function PortfolioGallery() {
           >
             {/* Image */}
             <div className="relative h-56">
-              <img src={selected.image} alt={selected.title} className="w-full h-full object-cover" />
+              <Image src={selected.image} alt={selected.title} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-gray-900/80 via-white/10 dark:via-gray-900/10 to-transparent" />
               <button
                 onClick={() => setSelected(null)}

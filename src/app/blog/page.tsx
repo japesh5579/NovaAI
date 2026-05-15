@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Clock, ArrowRight } from "lucide-react"
 
 export const metadata = {
@@ -11,7 +12,7 @@ export default function BlogPage() {
   const posts = getAllPosts()
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <main className="max-w-5xl mx-auto px-6 pt-32 pb-24">
 
         {/* Back to portfolio */}
@@ -41,11 +42,12 @@ export default function BlogPage() {
           <Link href={`/blog/${posts[0].slug}`} className="group block mb-10">
             <article className="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-all duration-300 bg-white hover:shadow-lg hover:shadow-gray-100">
               <div className="flex flex-col md:flex-row">
-                <div className="relative md:w-2/5 h-56 md:h-auto overflow-hidden bg-gray-100 shrink-0">
-                  <img
+                <div className="relative md:w-2/5 h-56 md:h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+                  <Image
                     src={posts[0].cover}
                     alt={posts[0].title}
-                    className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
+                    fill
+                    className="object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20" />
                 </div>
@@ -83,11 +85,12 @@ export default function BlogPage() {
             {posts.slice(1).map(post => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group block h-full">
                 <article className="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-all duration-300 bg-white hover:shadow-lg hover:shadow-gray-100 h-full flex flex-col">
-                  <div className="relative h-48 overflow-hidden bg-gray-100">
-                    <img
+                  <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <Image
                       src={post.cover}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-100"
+                      fill
+                      className="object-cover transition-all duration-500 scale-105 group-hover:scale-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
                   </div>
