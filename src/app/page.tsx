@@ -162,7 +162,7 @@ function ContactForm() {
           Something went wrong. Please try again or email directly.
         </p>
       )}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="cf-name" className={labelCls}>Name</Label>
           <Input id="cf-name" required placeholder="Your Name" value={form.name}
@@ -383,7 +383,7 @@ export default function Portfolio() {
             </Reveal>
 
             {/* ── Services grid with inline tech stack ── */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {SERVICES.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.04}>
                   <TiltCard tiltLimit={8} scale={1.03} effect="gravitate"

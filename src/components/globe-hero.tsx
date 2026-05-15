@@ -312,7 +312,7 @@ export default function GlobeHero() {
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-100/60 dark:bg-blue-900/20 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-4">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 lg:pt-0 flex flex-col lg:flex-row items-center gap-4">
 
         {/* Left — text */}
         <div className="flex-1 flex flex-col gap-6 text-center lg:text-left lg:pl-10">
@@ -359,11 +359,11 @@ export default function GlobeHero() {
           </motion.div>
         </div>
 
-        {/* Right — Globe scene */}
+        {/* Right — Globe scene (hidden on mobile) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.25 }}
-          className="flex-1 flex items-center justify-center"
+          className="flex-1 items-center justify-center hidden lg:flex"
         >
           <GlobeScene />
         </motion.div>
