@@ -41,7 +41,7 @@ const socialLinks: SocialLink[] = [
     text: "text-white",
   },
   {
-    href: "#",
+    href: "https://github.com/grajat510",
     label: "GitHub",
     icon: <SiGithub size={26} />,
     bg: "bg-zinc-800",
