@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { TiltCard } from "@/components/ui/tilt-card";
-import { X, ExternalLink, GitBranch } from "lucide-react";
+import { X, ExternalLink, GitBranch, Play } from "lucide-react";
 
 const CATEGORIES = ["All", "Web Apps", "AI Projects", "E-Commerce", "Creative"] as const;
 type Category = typeof CATEGORIES[number];
@@ -19,6 +19,7 @@ interface Project {
   dot: string;
   live?: string;
   github?: string;
+  demo?: string;
 }
 
 const PROJECTS: Project[] = [
@@ -68,8 +69,7 @@ const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80",
     accent: "from-cyan-500/10 to-blue-500/5",
     dot: "bg-cyan-400",
-    live: "#",
-    github: "#",
+    demo: "https://www.loom.com/share/5b99fbcbb8274479a0d2e6ebddae1ec0?sid=8133ee78-62c3-4529-91b9-b7505face13d",
   },
   {
     id: 5,
@@ -243,11 +243,17 @@ export default function PortfolioGallery() {
                   <span key={t} className="px-2.5 py-1 text-[10px] rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 font-semibold">{t}</span>
                 ))}
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
+                {selected.demo && (
+                  <a href={selected.demo} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF7A1A] hover:bg-[#FF7A1A]/90 text-white text-xs font-bold transition-colors shadow-lg shadow-[#FF7A1A]/20">
+                    <Play size={12} /> Watch Demo
+                  </a>
+                )}
                 {selected.live && (
                   <a href={selected.live} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FF7A1A] hover:bg-[#FF7A1A]/90 text-white text-xs font-bold transition-colors shadow-lg shadow-[#FF7A1A]/20">
-                    <ExternalLink size={12} /> Live Preview
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E3A73] hover:bg-[#1E3A73]/90 text-white text-xs font-bold transition-colors shadow-lg shadow-[#1E3A73]/20">
+                    <ExternalLink size={12} /> Live Site
                   </a>
                 )}
                 {selected.github && (
