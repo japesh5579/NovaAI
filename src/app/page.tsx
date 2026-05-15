@@ -331,7 +331,7 @@ export default function Portfolio() {
               { num: "15+", label: "Technologies"       },
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 0.08} className="text-center">
-                <p className="text-4xl font-black bg-gradient-to-r from-[#FF7A1A] to-[#1E3A73] bg-clip-text text-transparent mb-1">{s.num}</p>
+                <p className="text-4xl font-black text-[#FF7A1A] mb-1">{s.num}</p>
                 <p className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-[0.15em] font-semibold">{s.label}</p>
               </Reveal>
             ))}
